@@ -4,7 +4,9 @@ class MaxEffortsController < ApplicationController
   # GET /max_efforts
   # GET /max_efforts.json
   def index
-    @max_efforts = MaxEffort.all
+    #@max_efforts = MaxEffort.all
+    @max_efforts = current_user.max_efforts
+
   end
 
   # GET /max_efforts/1

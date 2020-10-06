@@ -1,5 +1,5 @@
 class WeekCollection < ApplicationRecord
 	#belongs_to :user
-	belongs_to :week 
+	has_many :weeks
 
 end

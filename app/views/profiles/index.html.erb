@@ -26,23 +26,33 @@
 <div class="container-fluid center_this">
 	<div class="row">
 		<div class="col-sm">
-			<%= link_to ' Exercise', exercises_path, class: 'btn btn-warning text-white btn-block' %>
+			<h6>First, add any exercises you would like</h6>
+			<%= link_to ' Exercises', exercises_path, class: 'btn btn-warning text-white btn-block' %>
 
 		</div>
 		<div class="col-sm">
+			<h6>Second, add you 'Max Efforts' for any exercise</h6>
 			<%= link_to ' Max Effort', max_efforts_path, class: 'btn btn-danger text-white btn-block' %>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-sm">
+			<h6>Now, create your SetRep's for your workouts. For Example, a warm-up SetRep would be like</h6>
+			<ol>
+				<li>50% for 10 Reps</li>
+				<li>60% for 8 Reps</li>
+				<li>60% for 5 Reps</li>
+			</ol>
 			<%= link_to ' Set Rep', set_reps_path, class: 'btn btn-info text-white btn-block' %>
 		</div>
 		<div class="col-sm">
+			<h6>Create your workout! What exercises do you do on Leg Day? You do have a Leg Day, Right?</h6>
 			<%= link_to ' Workout', workouts_path, class: 'btn btn-primary text-white btn-block' %>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-sm">
+			<h6>Almost done! Lets say you want to make a program that consists of 3 weeks. Add the <i>Workouts</i> associated with each week</h6>
 			<%= link_to ' Week', weeks_path, class: 'btn btn btn-dark text-white btn-block' %>
 		</div>
 		<div class="col-sm">

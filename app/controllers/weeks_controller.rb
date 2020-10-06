@@ -7,7 +7,9 @@ before_action :authenticate_user!, except: [:edit, :update, :new, :create]
   # GET /weeks
   # GET /weeks.json
   def index
-    @weeks = Week.all
+    #@weeks = Week.all
+    logger.debug("EXISTS???? #{current_user.weeks.inspect}")
+    @weeks = current_user.weeks
   end
 
   # GET /weeks/1
@@ -38,11 +40,12 @@ before_action :authenticate_user!, except: [:edit, :update, :new, :create]
     the_workouts = params[:order_details]['0']
     title = params[:title]
     user = User.find(params[:user]) 
+    logger.debug("MY USER IS #{user.inspect}")
 
     @week = Week.new
     @week.title = title
     logger.debug("Look here #{current_user}")
-    #@workout.user = user
+    @week.user = user
     
     respond_to do |format|
       if @week.save

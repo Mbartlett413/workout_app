@@ -89,8 +89,10 @@ ActiveRecord::Schema.define(version: 2020_10_02_171515) do
   create_table "weeks", force: :cascade do |t|
     t.string "title"
     t.boolean "active_week"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_weeks_on_user_id"
   end
 
   create_table "workouts", force: :cascade do |t|
@@ -107,5 +109,6 @@ ActiveRecord::Schema.define(version: 2020_10_02_171515) do
   add_foreign_key "set_rep_combos", "set_reps"
   add_foreign_key "wasps", "workouts"
   add_foreign_key "week_collections", "weeks"
+  add_foreign_key "weeks", "users"
   add_foreign_key "workouts", "users"
 end
