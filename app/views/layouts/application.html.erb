@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LFG</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <%= link_to "Milk Out", root_path, class:'navbar-link text-white' %>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <%= link_to "Home", root_path, class:'nav-link text-white' %>
+            </li>
+
+            <% if !user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Sign Up", new_user_registration_path, class:'nav-link text-white' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Sign In", new_user_session_path, class:'nav-link text-white' %>
+            </li>
+            <% end %>
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:'nav-link text-white' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+  <!-- -->
+  <% if notice.present? %>
+     <p class="alert alert-info"><%= notice %></p>
+  <% end %>
+    <% if alert.kind_of?(Array)%>
+       <ul>
+         <% alert.each do |x| %>
+           <li class="alert alert-danger" ><%= x %></li>
+         <% end %>
+       </ul>
+    <% elsif alert.present? %>
+        <p class="alert alert-danger"><%= alert %></p>
+    <% else %>    
+  
+  <% end %>
+      
+    <%= yield %>
+  </body>
+</html>

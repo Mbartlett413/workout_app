@@ -1,0 +1,57 @@
+
+
+<h1>My Profiles</h1>
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm">
+				<h6>Name: <%= @userProfile.name %></h6>
+				<h6>Age: <%= @userProfile.age %></h6>
+		</div>
+		<div class="col-sm center_this">
+			<h3>Max Efforts</h3>
+			<ul>
+				<% @userEfforts.each do |mx| %>
+					<li>-<%= mx.exercise.title %>- #<%= mx.max_amount%></li>
+
+				<% end %>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="container-fluid center_this">
+	<div class="row">
+		<div class="col-sm">
+			<%= link_to ' Exercise', exercises_path, class: 'btn btn-warning text-white btn-block' %>
+
+		</div>
+		<div class="col-sm">
+			<%= link_to ' Max Effort', max_efforts_path, class: 'btn btn-danger text-white btn-block' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm">
+			<%= link_to ' Set Rep', set_reps_path, class: 'btn btn-info text-white btn-block' %>
+		</div>
+		<div class="col-sm">
+			<%= link_to ' Workout', workouts_path, class: 'btn btn-primary text-white btn-block' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm">
+			<%= link_to ' Week', weeks_path, class: 'btn btn btn-dark text-white btn-block' %>
+		</div>
+		<div class="col-sm">
+			<% if @userProfile.present? %>
+				 <%= link_to 'Edit Profile', edit_profile_path(@userProfile), class: 'btn btn-success text-white btn-block' %>
+			<% else %>
+				<%= link_to ' new Profile', new_profile_path, class: 'btn btn-success text-white btn-block' %>
+			<% end %>
+		</div>
+	</div>
+</div>
+

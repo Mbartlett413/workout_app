@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  max_amount: 1
+  exercise: one
+  user: one
+
+two:
+  max_amount: 1
+  exercise: two
+  user: two

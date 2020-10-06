@@ -1,0 +1,2 @@
+module WaspsHelper
+end

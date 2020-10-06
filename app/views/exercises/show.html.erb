@@ -1,0 +1,19 @@
+
+
+<p>
+  <strong>Title:</strong>
+  <%= @exercise.title %>
+</p>
+
+<p>
+  <strong>Primary exercise:</strong>
+  <%= @exercise.primary_exercise %>
+</p>
+
+<p>
+  <strong>Accesory exercise:</strong>
+  <%= @exercise.accesory_exercise %>
+</p>
+
+<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
+<%= link_to 'Back', exercises_path %>

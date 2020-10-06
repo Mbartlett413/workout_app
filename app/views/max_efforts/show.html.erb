@@ -1,0 +1,14 @@
+
+<p>
+  <strong>Max amount:</strong>
+  <%= @max_effort.max_amount %>
+</p>
+
+<p>
+  <strong>Exercise:</strong>
+  <%= @max_effort.exercise.title %>
+</p>
+
+
+<%= link_to 'Edit', edit_max_effort_path(@max_effort) %> |
+<%= link_to 'Back', max_efforts_path %>

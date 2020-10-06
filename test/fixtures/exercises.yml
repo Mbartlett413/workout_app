@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  primary_exercise: false
+  accesory_exercise: false
+
+two:
+  title: MyString
+  primary_exercise: false
+  accesory_exercise: false

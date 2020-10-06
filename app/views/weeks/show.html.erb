@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Title:</strong>
+  <%= @week.title %>
+</p>
+
+<p>
+  <strong>Active week:</strong>
+  <%= @week.active_week %>
+</p>
+<hr>
+
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm">
+			<ol>
+			<% @wc.each do |x| %>
+				<li>
+				 <b>
+				 Workout Title: <%= Workout.find_by_id(x.workout_id).title %></b>
+				<%= link_to "Workout", workout_path(x.workout_id) %>
+				</li>
+			<% end %>
+			</ol>
+		</div>
+	</div>
+</div>
+
+
+<%= link_to 'Edit', edit_week_path(@week) %> |
+<%= link_to 'Back', weeks_path %>

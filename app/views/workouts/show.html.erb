@@ -1,0 +1,73 @@
+<h1 class="center_this"><strong><%= @workout.title %></strong></h1>
+  
+<div class="container-fluid">
+	<% @workout.wasps.each do |x| %>
+		<div class="row">
+			<div class="col-sm">
+				<h6>Exercise: <%= Exercise.find_by_id(x.exercise_id).title %></h6>
+			</div>
+			<div class="col-sm">
+				
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Percent</th>
+							<th>Reps</th>
+							<th>Max Effort</th>
+							<th>Calculate</th>
+						</tr>
+					</thead>
+
+					<tbody>
+					<% SetRep.find_by_id(x.set_rep_id).set_rep_combos.each do |src| %>
+						<tr class="math_row" >
+							<td><%= src.percent %></td>
+							<td><%= src.reps %></td>
+							<td>
+								<% if current_user.max_efforts.find_by_exercise_id(x.exercise_id) != nil%>
+									<%= current_user.max_efforts.find_by_exercise_id(x.exercise_id).max_amount %>
+								<% end %>	
+							</td>
+							<td><button type="button" onclick="domath()"> Calculate </button></td>
+						</tr>
+					<% end %>
+					</tbody>
+
+				</table> 
+
+			</div>
+		</div>
+	<% end %>
+</div>
+
+
+<%= link_to 'Edit', edit_workout_path(@workout) %> |
+<%= link_to 'Back', workouts_path %>
+
+<script type="text/javascript">
+	
+	function domath(){
+		var mathRow = document.getElementsByClassName('math_row');
+		console.log("mathRow", mathRow);
+		//start
+		for (var i = mathRow.length - 1; i >= 0; i--) {
+			console.log(mathRow[i].children);
+			console.log("percent",mathRow[i].children[0].innerHTML);
+			console.log("Reps", mathRow[i].children[1].innerHTML);
+
+			console.log("Max", Number(mathRow[i].children[2].innerHTML));
+
+			if (Number(mathRow[i].children[2].innerHTML) != 0){ 
+				mathRow[i].children[3].innerHTML = Number(mathRow[i].children[0].innerHTML)/100 * Number(mathRow[i].children[2].innerHTML)
+			} else {
+				mathRow[i].children[3].innerHTML = "Enter a Max"
+			}
+			
+
+
+
+		}
+		//end 
+ 	}
+
+</script>

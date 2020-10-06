@@ -1,0 +1,42 @@
+
+<!-- asdfasdfasdf-->
+  <div class="row formsection">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="form-group">
+          <label for="title">Name Set Rep:</label>
+          <input type="email" class="form-control" id="title" placeholder="Power Set" required >
+        </div>
+
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th> Percent: </th>
+              <th> Reps: </th>
+            </tr>
+          </thead>
+
+          <tbody id="tableToMod">
+              <tr id="rowToClone">
+                <td class="percent" > <input type="" name="" class="form-control"></td>
+                <td class="hash_value" > <input type="" name="" class="form-control"> </td> 
+              </tr>
+          </tbody>
+        </table>
+        <button id="add_row" type="button" onclick="cloneRowMethod()" class="btn btn-warning btn-block">Another Row</button>
+        <button id="submitSetRep" type="button" class="btn btn-primary btn-block"  >Create SetRep</button>
+
+        <hr>
+      </div>
+  </div>
+<!-- -->
+
+<script type="text/javascript">
+  function cloneRowMethod(){
+    var table = document.getElementById('tableToMod')
+    var row = document.getElementById('rowToClone')
+      var cloneRow = row.cloneNode(true)
+    cloneRow.id = "newID"
+    table.appendChild(cloneRow);
+  }
+</script>

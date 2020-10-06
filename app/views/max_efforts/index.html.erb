@@ -1,0 +1,30 @@
+
+
+<h1 class="center_this">Max Efforts</h1><br><hr>
+<%= link_to 'New Max Effort', new_max_effort_path, class: 'btn btn-outline-primary' %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Max amount</th>
+      <th>Exercise</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @max_efforts.each do |max_effort| %>
+      <tr>
+        <td><%= max_effort.max_amount %></td>
+        <td><%= max_effort.exercise.title %></td>
+        <td><%= link_to 'Show', max_effort %></td>
+        <td><%= link_to 'Edit', edit_max_effort_path(max_effort) %></td>
+        <td><%= link_to 'Destroy', max_effort, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+

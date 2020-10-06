@@ -1,0 +1,47 @@
+<!-- asdfasdfasdf-->
+  <div class="row formsection">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <p id="user"><%= @user.id%></p>
+        <div class="form-group">
+          <label for="title">Name This Week:</label>
+          <input type="email" class="form-control" id="title" placeholder="First Power Week" required >
+        </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="active_week" value="option1">
+        <label class="form-check-label" for="active_week">active_week</label>
+      </div>
+
+      <div class="col-sm-12 col-md-12 col-lg-12">
+        <table class="table">
+          <thead>
+            <tr>
+              <th> Exercise: </th>
+              <th> SetRep Scheme: </th>
+            </tr>
+          </thead>
+
+          <tbody id="tableToMod">
+              <tr id="rowToClone"> 
+                <td class="exercise" > <%= collection_select(:title, :exercise_id, @exercises, :id, :title, {:prompt => true}, class: 'form-control') %></td>
+                <td class="setRep" > <%= collection_select(:title, :id, @setReps, :id, :title, {:prompt => true}, class: 'form-control') %></td>
+              </tr>
+          </tbody>
+        </table>
+        <button id="add_row" type="button" onclick="cloneRowMethod()" class="btn btn-warning btn-block">Another Row</button>
+        <button id="submitWorkout" type="button" class="btn btn-primary btn-block"  >Create SetRep</button>
+
+        <hr>
+      </div>
+  </div>
+<!-- -->
+
+<script type="text/javascript">
+  function cloneRowMethod(){
+    var table = document.getElementById('tableToMod')
+    var row = document.getElementById('rowToClone')
+      var cloneRow = row.cloneNode(true)
+    cloneRow.id = "newID"
+    table.appendChild(cloneRow);
+  }
+</script>

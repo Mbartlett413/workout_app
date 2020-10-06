@@ -1,0 +1,29 @@
+
+<p>
+  <strong>Title:</strong>
+  <%= @set_rep.title %>
+</p>
+
+<p>
+  <strong>Setrep value:</strong> </p>
+  <table class="table">
+  	<thead>
+  		<tr>
+  			<th>Percent</th>
+  			<th>Reps</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+	  <% @set_rep.set_rep_combos.each do |x| %>
+	  <tr>
+	  	<td><%= x.percent %></td>
+	  	<td><%= x.reps %></td>
+	  </tr> 
+	  <% end %>
+  	</tbody>
+  </table>
+
+
+
+<%= link_to 'Edit', edit_set_rep_path(@set_rep) %> |
+<%= link_to 'Back', set_reps_path %>
