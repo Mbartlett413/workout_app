@@ -20,13 +20,14 @@ before_action :authenticate_user!, except: [:edit, :update, :new, :create]
   def new
     @user = current_user
     @workout = Workout.new
-    @exercises = Exercise.all
+    @exercises = Exercise.all.sort_by { |obj| obj.title }
     @setReps = SetRep.all 
   end
 
   # GET /workouts/1/edit
   def edit
-    @exercise = Exercise.all
+    @wasp = Wasp.new
+    @exercise = Exercise.all.sort_by { |obj| obj.title }
     @setRep = SetRep.all
   end
 

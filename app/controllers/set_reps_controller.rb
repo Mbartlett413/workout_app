@@ -20,6 +20,7 @@ class SetRepsController < ApplicationController
 
   # GET /set_reps/1/edit
   def edit
+    @set_rep_combo = SetRepCombo.new
   end
 
   # POST /set_reps

@@ -20,25 +20,38 @@
 		<tr>
 			<th>Percent</th>
 			<th>Reps</th>
-			<th>Submit</th>
+			<th colspan="2">Submit</th>
 		</tr>
 	</thead>
 
 	<tbody>
 		<% @set_rep.set_rep_combos.each do |src| %>
-		<tr>
-			<%= simple_form_for(src) do |z| %>
-			<!-- setrep, percent
-				reps-->
-				<td><%= z.input :percent %></td>
-				<td><%= z.input :reps %></td>
-				<td><%= z.button :submit, class: 'btn btn-outline-primary' %></td>
-			<% end %>
-		</tr>
+			<tr>
+				<%= simple_form_for(src) do |z| %>
+				<!-- setrep, percent
+					reps-->
+					<td><%= z.input :percent %></td>
+					<td><%= z.input :reps %></td>
+					<td><%= z.button :submit, class: 'btn btn-outline-primary' %></td>
+					<td><%= link_to 'Destroy', src, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-primary' %></td>
+				<% end %>
+			</tr>
 		<% end %>
 	</tbody>
 </table>
 
+<div class="row">
+	<div class="col-lg">
+		<h3 class="center_this">Add New Row</h3>
+		<%= simple_form_for(@set_rep_combo, method: :post, url: set_rep_combos_path) do |z| %>
+				<div style="display: none;"><%= z.input :set_rep_id, input_html: {value: z.object.set_rep || @set_rep.id} %></div>
+				<div class="form-inputs" ><%= z.input :percent %></div>
+				<div class="form-inputs" ><%= z.input :reps %></div>
+				<div class="form-actions" ><%= z.button :submit, class: 'btn btn-outline-primary' %></div>
+		<% end %>
+
+	</div>
+</div>
 
 
 <%= link_to 'Show', @set_rep %> |

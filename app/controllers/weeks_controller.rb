@@ -29,6 +29,7 @@ before_action :authenticate_user!, except: [:edit, :update, :new, :create]
   # GET /weeks/1/edit
   def edit
     @workouts = Workout.all
+    @weekCollection = WeekCollection.new
   end
 
   # POST /weeks

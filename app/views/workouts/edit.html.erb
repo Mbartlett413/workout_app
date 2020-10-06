@@ -20,7 +20,7 @@
 		<tr>
 			<th>Exercise</th> 
 			<th>SetRep</th>
-			<th>Submit</th>
+			<th colspan="2">Submit</th> 
 		</tr>
 	</thead>
 
@@ -31,10 +31,26 @@
 				<td><%= z.input :exercise_id, collection: @exercise %></td>
 				<td><%= z.input :set_rep_id, collection: @setRep %></td>
 				<td><%= z.button :submit, class: 'btn btn-primary' %></td>
+				<td><%= link_to 'Destroy', src, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-primary' %></td>
 			<% end %>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+
+<hr>
+
+<div class="row">
+	<div class="col-lg">
+		<h3 class="center_this"> Add Row </h3>
+		<%= simple_form_for(@wasp, method: :post, url: wasps_path) do |z| %>
+				<div style="display: none;"><%= z.input :workout_id, input_html: {value: z.object.workout_id || @workout.id} %></div>
+				<div class="form-inputs" ><%= z.input :exercise_id, collection: @exercise %></div>
+				<div class="form-inputs" ><%= z.input :set_rep_id, collection: @setRep %></div>
+				<div class="form-actions" ><%= z.button :submit, class: 'btn btn-outline-primary' %></div>
+		<% end %>
+
+	</div>
+</div>
 <%= link_to 'Show', @workout %> |
 <%= link_to 'Back', workouts_path %>
