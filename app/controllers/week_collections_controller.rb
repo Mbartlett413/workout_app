@@ -1,5 +1,5 @@
 class WeekCollectionsController < ApplicationController
-	before_action :authenticate_user!
+
 	def update 
 		logger.debug("params #{params}")
 		@WC = WeekCollection.find_by_id(params[:id])

@@ -1,6 +1,6 @@
 class WorkoutsController < ApplicationController
   before_action :set_workout, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user! 
+before_action :authenticate_user!, except: [:edit, :update, :new, :create]
   protect_from_forgery prepend: true
   
   # GET /workouts

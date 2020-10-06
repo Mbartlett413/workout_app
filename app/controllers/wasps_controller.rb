@@ -1,5 +1,5 @@
 class WaspsController < ApplicationController
-	before_action :authenticate_user!
+
 	def update 
 		logger.debug("params #{params}")
 		@wasp = Wasp.find_by_id(params[:id])
