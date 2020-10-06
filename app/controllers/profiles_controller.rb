@@ -4,6 +4,18 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
+
+    if @userProfile == nil
+      logger.debug("does not exist HERE #{@userProfile}")
+      @start = Profile.new
+        @start.name = current_user.email
+        @start.age = 01
+        @start.user_id = current_user.id
+        @start.user = current_user
+        @start.save
+    else
+      logger.debug("exists #{@userProfile}")
+    end 
     @profiles = Profile.all
     @userProfile = current_user.profile
     @userEfforts = current_user.max_efforts

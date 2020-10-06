@@ -1,6 +1,6 @@
 class SetRepsController < ApplicationController
   before_action :set_set_rep, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:edit, :update]
   protect_from_forgery prepend: true
   # GET /set_reps
   # GET /set_reps.json

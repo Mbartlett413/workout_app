@@ -1,7 +1,7 @@
 class WeeksController < ApplicationController
   before_action :set_week, only: [:show, :edit, :update, :destroy]
   protect_from_forgery prepend: true
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:edit, :update]
 
   # GET /weeks
   # GET /weeks.json
