@@ -1,56 +1,69 @@
-<h1>Editing Workout</h1>
-
-<%= simple_form_for(@workout) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-    <%= f.input :title %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
-<hr>
-
-<table class="table">
-	<thead>
-		<tr>
-			<th>Exercise</th> 
-			<th>SetRep</th>
-			<th colspan="2">Submit</th> 
-		</tr>
-	</thead>
-
-	<tbody>
-		<% @workout.wasps.each do |src| %>
-		<tr>
-			<%= simple_form_for(src) do |z| %>
-				<td><%= z.input :exercise_id, collection: @exercise %></td>
-				<td><%= z.input :set_rep_id, collection: @setRep %></td>
-				<td><%= z.button :submit, class: 'btn btn-primary' %></td>
-				<td><%= link_to 'Destroy', src, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-primary' %></td>
-			<% end %>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
-
-<hr>
-
-<div class="row">
-	<div class="col-lg">
-		<h3 class="center_this"> Add Row </h3>
-		<%= simple_form_for(@wasp, method: :post, url: wasps_path) do |z| %>
-				<div style="display: none;"><%= z.input :workout_id, input_html: {value: z.object.workout_id || @workout.id} %></div>
-				<div class="form-inputs" ><%= z.input :exercise_id, collection: @exercise %></div>
-				<div class="form-inputs" ><%= z.input :set_rep_id, collection: @setRep %></div>
-				<div class="form-actions" ><%= z.button :submit, class: 'btn btn-outline-primary' %></div>
-		<% end %>
-
-	</div>
-</div>
 <%= link_to 'Show', @workout %> |
 <%= link_to 'Back', workouts_path %>
+<h1 class="center_this">Editing Workout</h1>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md">
+			<%= simple_form_for(@workout) do |f| %>
+			  <%= f.error_notification %>
+			  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+			  <div class="form-inputs">
+			    <%= f.input :title %>
+			  </div>
+
+			  <div class="form-actions">
+			    <%= f.button :submit, class: 'btn btn-primary' %>
+			  </div>
+			<% end %>			
+		</div>
+	</div>
+</div>
+
+
+<hr>
+
+<div class="container-fluid">
+	<h1 class="center_this">Current Exercise/SetRep</h1>
+	<div class="row">
+		<% @workout.wasps.each do |src| %>
+			<%= simple_form_for(src) do |z| %>
+			<div class="col-lg d-inline">
+				<%= z.input :exercise_id, collection: @exercise %>
+			</div>
+				
+			<div class="col-lg d-inline">
+				<%= z.input :set_rep_id, collection: @setRep %>
+			</div>
+				
+			<div class="col-lg d-inline">
+				<%= z.button :submit, class: 'btn btn-primary' %>
+				<%= link_to 'Destroy', src, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-warning' %>
+			</div>
+				
+
+			<% end %>
+		<% end %>		
+	</div>
+</div>
+
+
+
+<hr>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg">
+			<h3 class="center_this"> Add Row </h3>
+
+			<%= simple_form_for(@wasp, method: :post, url: wasps_path) do |z| %>
+					<div style="display: none;"><%= z.input :workout_id, input_html: {value: z.object.workout_id || @workout.id} %></div>
+					<div class="form-inputs" ><%= z.input :exercise_id, collection: @exercise %></div>
+					<div class="form-inputs" ><%= z.input :set_rep_id, collection: @setRep %></div>
+					<div class="form-actions" ><%= z.button :submit, 'ADD ROW', class: 'btn btn-outline-primary' %></div>
+			<% end %>
+
+		</div>
+	</div>
+</div>
+
